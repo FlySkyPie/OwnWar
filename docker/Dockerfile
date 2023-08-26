@@ -41,4 +41,7 @@ RUN apt install -y \
 
 COPY --from=godot_rapier3d-builder /app/godot_rapier3d/module godot/modules/pluggable_physics
 
+COPY OwnWar/patch/godot/vehicle_body.patch vehicle_body.patch
+RUN cd godot && git apply ../vehicle_body.patch
+
 RUN cd godot && scons platform=x11 -j$(nproc)
