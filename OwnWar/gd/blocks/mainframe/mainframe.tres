@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://blocks/block.gdns" type="Script" id=1]
+[ext_resource path="res://blocks/mainframe/mainframe.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://blocks/mainframe/mainframe.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+human_name = "Mainframe"
+mass = 10.0
+human_category = "Other"
+revision = 0
+aabb = AABB( 0, 0, 0, 1, 1, 1 )
+id = 76
+health = 500
+cost = 10
+__mirror_block_id = 0
+mesh = ExtResource( 2 )
+instance = ExtResource( 3 )
+mirror_rotation_offset = 0
+alternate_rotation_map = null

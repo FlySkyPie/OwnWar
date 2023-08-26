@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://editor/floor.shader" type="Shader" id=2]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/enable_mirror = false
+shader_param/grid_size = 37
+shader_param/edge_size = 0.02
+shader_param/edge_glow = 2.0
+shader_param/cell_color = Color( 0.552941, 0.552941, 0.552941, 1 )
+shader_param/edge_color = Color( 0.97, 0.74, 0.26, 1 )
+shader_param/mirror_color = Color( 1, 0, 0, 1 )
+shader_param/mirror_offset = 0.1
+shader_param/mirror_glow = 1.05
+shader_param/sample_radius = 0.004
+shader_param/samples = 5

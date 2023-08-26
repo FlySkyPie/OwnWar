@@ -1,0 +1,32 @@
+ Godot-specific ignores
+.import/
+export.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# OS X
+.DS_Store
+
+# Krita backup files
+*~
+
+# Dia backup files
+*.autosave
+
+/bin/<Paste>
+
+# Rust stuff
+target/
+
+# Other stuff
+bin/
+lib/
+gd/lib/*
+!gd/lib/*.gdnlib
+/callgrind/
+*.blend1

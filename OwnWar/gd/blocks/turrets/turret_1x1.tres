@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://blocks/block.gdns" type="Script" id=1]
+[ext_resource path="res://blocks/turrets/turret_1x1.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+human_name = "Turret Connector"
+human_category = "Weapons"
+mass = 3.0
+revision = 1
+aabb = AABB( 0, 0, 0, 1, 1, 1 )
+id = 77
+health = 300
+cost = 8
+__mirror_block_id = null
+instance = ExtResource( 2 )
+mirror_rotation_offset = 0
+alternate_rotation_map = null
+extra_mount_points = PoolVector3Array(  )
+extra_mount_sides = PoolByteArray(  )
+mount_sides = 62
