@@ -32,6 +32,10 @@ COPY OwnWar/gdn gdn
 RUN cd gdn/gd_3d_batcher && cargo build --release --target ${TARGET_LINUX}
 RUN cd gdn/hterrain && cargo build --release --target ${TARGET_LINUX}
 
+RUN cp godot_rapier3d/module/api.json godot_rapier3d/rapier3d/api.json
+
+RUN cd gdn/ownwar && cargo build --release --target ${TARGET_LINUX}
+
 FROM rust-base as godot-builder
 WORKDIR /app
 RUN git clone --depth 1 -b 3.3 https://github.com/godotengine/godot
@@ -72,3 +76,5 @@ COPY --from=native-library-builder \
     /app/gdn/gd_3d_batcher/target/${TARGET_LINUX}/release/libgd_3d_batcher.so .
 COPY --from=native-library-builder \
     /app/gdn/hterrain/target/${TARGET_LINUX}/release/libhterrain.so .
+COPY --from=native-library-builder \
+    /app/gdn/ownwar/target/${TARGET_LINUX}/release/libownwar.so .
