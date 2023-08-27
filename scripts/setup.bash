@@ -46,9 +46,11 @@ if [ ! -d "${TEMPLATE_DIR}" ]; then
 
     mkdir -p ${TEMPLATE_DIR}
 
-    unzip -j ${BUILD_DIR}/Godot_v3.3.4-stable_export_templates.tpz \
-        templates/* \
-        -d ${TEMPLATE_DIR}
+    docker run --rm --entrypoint cat ownwar-deps-builder:latest \
+        /build/templates/linux_x11_64_debug >${TEMPLATE_DIR}/linux_x11_64_debug
+    # unzip -j ${BUILD_DIR}/Godot_v3.3.4-stable_export_templates.tpz \
+    #     templates/* \
+    #     -d ${TEMPLATE_DIR}
 
 else
     echo "Export templates installed."

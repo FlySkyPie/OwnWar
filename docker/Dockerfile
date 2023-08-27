@@ -62,6 +62,10 @@ COPY OwnWar/patch/godot/vehicle_body.patch vehicle_body.patch
 RUN cd godot && git apply ../vehicle_body.patch
 
 RUN cd godot && scons platform=x11 -j$(nproc)
+RUN cd godot && scons platform=x11 tools=no target=release_debug bits=64 -j$(nproc)
+# RUN cd godot && scons platform=x11 tools=no target=release_debug bits=32
+# RUN cd godot && scons platform=x11 tools=no target=release bits=64
+# RUN cd godot && scons platform=x11 tools=no target=release bits=32
 
 FROM rust-base as template-expoter
 WORKDIR /download
@@ -76,6 +80,10 @@ ARG TARGET_LINUX=x86_64-unknown-linux-gnu
 COPY --from=godot-builder \
     /app/godot/bin/godot.x11.tools.64 \
     Godot_v3.3.5-modified_x11.64
+
+COPY --from=godot-builder \
+    /app/godot/bin/godot.x11.opt.debug.64 \
+    templates/linux_x11_64_debug
 
 COPY --from=native-library-builder \
     /app/gdn/gd_3d_batcher/target/${TARGET_LINUX}/release/libgd_3d_batcher.so .
