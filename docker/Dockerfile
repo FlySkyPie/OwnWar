@@ -63,6 +63,11 @@ RUN cd godot && git apply ../vehicle_body.patch
 
 RUN cd godot && scons platform=x11 -j$(nproc)
 
+FROM rust-base as template-expoter
+WORKDIR /download
+RUN apt install -y wget
+RUN wget https://github.com/godotengine/godot/releases/download/3.3.4-stable/Godot_v3.3.4-stable_export_templates.tpz
+
 FROM rust-base as expoter
 WORKDIR /build
 
@@ -78,3 +83,6 @@ COPY --from=native-library-builder \
     /app/gdn/hterrain/target/${TARGET_LINUX}/release/libhterrain.so .
 COPY --from=native-library-builder \
     /app/gdn/ownwar/target/${TARGET_LINUX}/release/libownwar.so .
+
+COPY --from=template-expoter \
+    /download/Godot_v3.3.4-stable_export_templates.tpz .
