@@ -17,7 +17,7 @@ if [ ! -f "${BUILD_DIR}/Godot_v3.3.5-modified_x11.64" ]; then
     docker run --rm --entrypoint cat ownwar-deps-builder:latest \
         /build/Godot_v3.3.5-modified_x11.64 >${BUILD_DIR}/Godot_v3.3.5-modified_x11.64
 else
-    echo "Godot engine exists."
+    echo "Godot engine exists. Skip extraction."
 fi
 
 echo "Extracting native libraries..."
@@ -42,5 +42,5 @@ if [ ! -d "${TEMPLATE_DIR}" ]; then
         /build/templates/linux_x11_64_debug >${TEMPLATE_DIR}/linux_x11_64_debug
 
 else
-    echo "Export templates installed."
+    echo "Export templates installed. Skip template installation."
 fi
